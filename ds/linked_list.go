@@ -13,6 +13,7 @@ type LinkedList struct {
 	head *Node
 }
 
+// AddToEnd adds a new node with the specified value to the head of the linked list.
 func (lL *LinkedList) AddToBegining(data int) {
 	newNode := &Node{data: data}
 	lL.head = newNode
@@ -59,6 +60,10 @@ func (lL *LinkedList) Remove(data int) {
 
 // Display prints all elements in the linked list.
 func (lL *LinkedList) Display() {
+	if lL.head == nil {
+		fmt.Println("Empty")
+	}
+
 	current := lL.head
 	for current.next != nil {
 		fmt.Printf("%d -> ", current.data)
