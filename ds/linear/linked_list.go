@@ -1,30 +1,27 @@
-package ds
+package linear
 
-import "fmt"
-
-// Node represents a single node in the linked list.
-type Node struct {
-	data int
-	next *Node
-}
+import (
+	"errors"
+	"fmt"
+)
 
 // LinkedList represents the linked list with a head pointer.
-type LinkedList struct {
-	head *Node
+type LinkedList[T comparable] struct {
+	head *Node[T]
 }
 
 // AddToEnd adds a new node with the specified value to the head of the linked list.
-func (lL *LinkedList) AddToBegining(data int) {
-	newNode := &Node{data: data}
+func (lL *LinkedList[T]) AddToBegining(data T) {
+	newNode := &Node[T]{data: data}
 	lL.head = newNode
 }
 
 // AddToEnd adds a new node with the specified value to the end of the linked list.
-func (lL *LinkedList) AddToEnd(data int) {
-	newNode := &Node{data: data}
+func (lL *LinkedList[T]) AddToEnd(data T) T {
+	newNode := &Node[T]{data: data}
 
 	if lL.head == nil {
-		lL.head = newNode
+		lL.AddToBegining(data)
 	} else {
 		current := lL.head
 		for current.next != nil {
@@ -33,17 +30,20 @@ func (lL *LinkedList) AddToEnd(data int) {
 
 		current.next = newNode
 	}
+
+	return data
 }
 
 // Remove removes the first node with the specified value from the linked list.
-func (lL *LinkedList) Remove(data int) {
+func (lL *LinkedList[T]) Remove(data T) (T, error) {
 	if lL.head == nil {
-		return
+		var zero T
+		return zero, errors.New("error: list is empty")
 	}
 
 	if lL.head.data == data {
 		lL.head = lL.head.next
-		return
+		return data, nil
 	}
 
 	current := lL.head
@@ -51,24 +51,28 @@ func (lL *LinkedList) Remove(data int) {
 
 		if current.next.data == data {
 			current.next = current.next.next
-			return
+			return data, nil
 		}
 
 		current = current.next
 	}
+
+	var zero T
+	return zero, errors.New("error: data value is not found")
 }
 
 // Display prints all elements in the linked list.
-func (lL *LinkedList) Display() {
+func (lL *LinkedList[T]) Display() error {
 	if lL.head == nil {
-		fmt.Println("Empty")
+		return errors.New("error: list is empty")
 	}
 
 	current := lL.head
 	for current.next != nil {
-		fmt.Printf("%d -> ", current.data)
+		fmt.Printf("%v -> ", current.data)
 		current = current.next
 	}
 
-	fmt.Printf("%d -> nil \n", current.data)
+	fmt.Printf("%v -> nil \n", current.data)
+	return nil
 }
