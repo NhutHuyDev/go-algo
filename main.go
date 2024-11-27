@@ -1,21 +1,7 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/NhutHuyDev/go-algo/ds/linear"
-)
-
 func main() {
-	var err error
-
-	/* Binary Search */
-	// arr := []int{3, 7, 11, 12, 13, 29, 32, 42, 56, 66, 67, 75, 88}
-	// fmt.Println(search.Binary_Search(arr, 32))
-
-	/* Selection Sort */
-	// arr := []int{75, 67, 42, 11, 13, 88, 7, 32, 56, 29, 12, 3, 66}
-	// fmt.Println(sort.Selection_Sort(arr))
+	// var err error
 
 	/* Linked Lists */
 	// lL := linear.LinkedList[int]{}
@@ -57,20 +43,20 @@ func main() {
 	// }
 
 	/* Queues */
-	queue := linear.Queue[int]{}
-	queue.Enqueue(4)
-	queue.Enqueue(10)
-	queue.Enqueue(15)
-	queue.Enqueue(23)
-	queue.Enqueue(35)
+	// queue := linear.Queue[int]{}
+	// queue.Enqueue(4)
+	// queue.Enqueue(10)
+	// queue.Enqueue(15)
+	// queue.Enqueue(23)
+	// queue.Enqueue(35)
 
-	_, err = queue.Dequeue()
-	if err != nil {
-		fmt.Println(err)
-	}
+	// _, err = queue.Dequeue()
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
 
-	err = queue.Display()
-	if err != nil {
-		fmt.Println(err)
-	}
+	// err = queue.Display()
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
 }

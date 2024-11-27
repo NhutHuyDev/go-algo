@@ -1,26 +1,21 @@
 package sort
 
-func Selection_Sort(arr []int) []int {
+func SelectionSort(arr []int) []int {
 	i := 0
 
-	for i < len(arr)-1 {
+	for ; i < len(arr)-1; i++ {
 		min := i
 		j := i + 1
 
-		for j < len(arr) {
+		for ; j < len(arr); j++ {
 			// Find min
 			if arr[min] > arr[j] {
 				min = j
 			}
-			j++
 		}
 
 		// Swap
-		temp := arr[i]
-		arr[i] = arr[min]
-		arr[min] = temp
-
-		i++
+		arr[i], arr[min] = arr[min], arr[i]
 	}
 
 	return arr
