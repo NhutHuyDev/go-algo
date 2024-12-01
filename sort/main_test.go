@@ -1,6 +1,7 @@
 package sort
 
 import (
+	"math/rand"
 	"reflect"
 	"testing"
 )
@@ -28,4 +29,13 @@ func HandleSortAgorithmTest(t *testing.T, sortFunc func(arr []int) []int) {
 			}
 		})
 	}
+}
+
+// Helper function to generate a random array of a given size
+func generateRandomArray(size int) []int {
+	arr := make([]int, size)
+	for i := 0; i < size; i++ {
+		arr[i] = rand.Intn(1000) // Random integers between 0 and 999
+	}
+	return arr
 }

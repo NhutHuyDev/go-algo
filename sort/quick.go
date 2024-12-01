@@ -1,5 +1,9 @@
 package sort
 
+import (
+	"math/rand"
+)
+
 /* QuickSortV1 Implementation */
 
 func QuickSortV1(arr []int) []int {
@@ -55,6 +59,34 @@ func Partition(arr []int, low, high int) int {
 func QuickSortV2(arr []int, low, high int) {
 	if low < high {
 		pivot := Partition(arr, low, high)
+
+		QuickSortV2(arr, low, pivot-1)
+		QuickSortV2(arr, pivot+1, high)
+	}
+}
+
+func PartitionV2(arr []int, low, high int) int {
+	pivotIndex := rand.Intn(high-low+1) + low
+	arr[pivotIndex], arr[high] = arr[high], arr[pivotIndex]
+	pivot := arr[high]
+
+	i := low - 1
+
+	for j := low; j < high; j++ {
+		if arr[j] <= pivot {
+			i += 1
+			arr[j], arr[i] = arr[i], arr[j]
+		}
+	}
+
+	arr[high], arr[i+1] = arr[i+1], arr[high]
+
+	return i + 1
+}
+
+func QuickSortV3(arr []int, low, high int) {
+	if low < high {
+		pivot := PartitionV2(arr, low, high)
 
 		QuickSortV2(arr, low, pivot-1)
 		QuickSortV2(arr, pivot+1, high)
