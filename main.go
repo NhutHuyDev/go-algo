@@ -1,5 +1,7 @@
 package main
 
+import nolinear "github.com/NhutHuyDev/go-algo/ds/nonlinear"
+
 func main() {
 	// var err error
 
@@ -59,4 +61,17 @@ func main() {
 	// if err != nil {
 	// 	fmt.Println(err)
 	// }
+
+	/* Undirected & Unweighted Graph */
+	g := nolinear.NewGraph()
+
+	// Add edges
+	g.AddEdge(1, 2)
+	g.AddEdge(1, 3)
+	g.AddEdge(2, 4)
+	g.AddEdge(2, 5)
+	g.AddEdge(3, 6)
+	g.AddEdge(3, 7)
+
+	g.Display()
 }
