@@ -1,9 +1,13 @@
 package main
 
-import nolinear "github.com/NhutHuyDev/go-algo/ds/nonlinear"
+import (
+	"fmt"
+
+	"github.com/NhutHuyDev/go-algo/ds/linear"
+)
 
 func main() {
-	// var err error
+	var err error
 
 	/* Linked Lists */
 	// lL := linear.LinkedList[int]{}
@@ -45,17 +49,23 @@ func main() {
 	// }
 
 	/* Queues */
-	// queue := linear.Queue[int]{}
-	// queue.Enqueue(4)
+	queue := linear.Queue[int]{}
+	queue.Enqueue(4)
 	// queue.Enqueue(10)
 	// queue.Enqueue(15)
 	// queue.Enqueue(23)
 	// queue.Enqueue(35)
 
-	// _, err = queue.Dequeue()
-	// if err != nil {
-	// 	fmt.Println(err)
-	// }
+	value, err := queue.Dequeue()
+	// _, _ = queue.Dequeue()
+	// _, _ = queue.Dequeue()
+	// _, _ = queue.Dequeue()
+	// _, _ = queue.Dequeue()
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(value)
+	}
 
 	// err = queue.Display()
 	// if err != nil {
@@ -63,15 +73,17 @@ func main() {
 	// }
 
 	/* Undirected & Unweighted Graph */
-	g := nolinear.NewGraph()
+	// g := nolinear.NewGraph()
 
 	// Add edges
-	g.AddEdge(1, 2)
-	g.AddEdge(1, 3)
-	g.AddEdge(2, 4)
-	g.AddEdge(2, 5)
-	g.AddEdge(3, 6)
-	g.AddEdge(3, 7)
+	// g.AddEdge(1, 2)
+	// g.AddEdge(1, 3)
+	// g.AddEdge(2, 4)
+	// g.AddEdge(2, 5)
+	// g.AddEdge(3, 6)
+	// g.AddEdge(3, 7)
 
-	g.Display()
+	// fmt.Println(g.GetAnyNode())
+
+	// g.Display()
 }

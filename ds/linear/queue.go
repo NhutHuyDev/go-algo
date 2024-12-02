@@ -39,15 +39,15 @@ func (queue *Queue[T]) Dequeue() (T, error) {
 		return zero, errors.New("error: queue is empty")
 	}
 
-	queue.Front = queue.Front.next
-	if queue.Front == nil {
+	node := queue.Front
+	if queue.Front.next == nil {
+		queue.Front = nil
 		queue.Back = nil
-
-		var zero T
-		return zero, nil
 	} else {
-		return queue.Front.data, nil
+		queue.Front = queue.Front.next
 	}
+
+	return node.data, nil
 }
 
 // Display prints all elements in the linked list.
